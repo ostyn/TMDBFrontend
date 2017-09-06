@@ -1,0 +1,14 @@
+<template>
+  <input value.bind="query & debounce : 250">
+  <require from="./style.css"></require>
+  <require from="./movie"></require>
+  <div if.bind="pages > 1">
+    <button if.bind="currentPage-1 >= 1" title="Page 1" click.trigger="changePage(1)">${'<<'}</button>
+    <button if.bind="currentPage-1 >= 1" title.bind="'Page ' + (currentPage-1)" click.trigger="changePage(currentPage-1)">${'<'}</button>
+    Page ${currentPage}
+    <button if.bind="currentPage+1 <= pages" title.bind="'Page ' + (currentPage+1)" click.trigger="changePage(currentPage+1)">${'>'}</button>
+    <button if.bind="currentPage+1 <= pages" title.bind="'Page ' + pages" click.trigger="changePage(pages)">${'>>'}</button>
+    <div>${totalResults} results in ${pages} pages</div>
+  </div>
+  <movie repeat.for="movie of movies" movie-data.bind="movie"></movie>
+</template>
