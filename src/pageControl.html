@@ -1,0 +1,9 @@
+<template>
+    <div if.bind="numPages > 1">
+        <button disabled.bind="disabled" if.bind="currentPage-1 >= 1" title="Page 1" click.trigger="changePage(1)">${'<<'}</button>
+        <button disabled.bind="disabled" if.bind="currentPage-1 >= 1" title.bind="'Page ' + (currentPage-1)" click.trigger="changePage(currentPage-1)">${'<'}</button>        Page ${currentPage}
+        <button disabled.bind="disabled" if.bind="currentPage+1 <= numPages" title.bind="'Page ' + (currentPage+1)" click.trigger="changePage(currentPage+1)">${'>'}</button>
+        <button disabled.bind="disabled" if.bind="currentPage+1 <= numPages" title.bind="'Page ' + numPages" click.trigger="changePage(numPages)">${'>>'}</button>
+    </div>
+    <div>${totalResults} results in ${numPages} pages</div>
+</template>

@@ -1,57 +1,38 @@
-import {HttpClient} from 'aurelia-fetch-client';
-import {inject, bindable} from 'aurelia-framework'
-@inject(HttpClient)
+import { TmdbDao }  from './TmdbDao';
+import { inject, bindable } from 'aurelia-framework';
+
+@inject(TmdbDao)
 export class App {
-  movies : object [];
-  http : HttpClient;
-  apiKey : string = "500ea8259cebb337641f2a3500bc8dd8";
-  @bindable query : string = "";
-  pages : number = 1;
-  totalResults : number = 0;
-  @bindable currentPage : number = 1;
-  constructor(httpClient) {
-    this.http = httpClient;
-    this.http.baseUrl = "https://api.themoviedb.org/3/";
+  movies: object[];
+  @bindable query: string = "";
+  @bindable currentPage: number = 1;
+  numPages: number = 1;
+  totalResults: number = 0;
+  requestPending : boolean = false;
+
+  tmdbDao: TmdbDao;
+
+  constructor(tmdbDao) {
+    this.tmdbDao = tmdbDao;
   }
-  activate(params) {
-  }
+
   queryChanged() {
     this.searchMovies(this.query);
   }
-  changePage(num){
-    this.searchMovies(this.query, num);
+
+  currentPageChanged() {
+    this.searchMovies(this.query, this.currentPage);
   }
-  getMovie(movieId : number) : Promise<object> {
-    return this.http.fetch(`movie/${movieId}?api_key=${this.apiKey}`)
-      .then(response => {
-          if(response.status > 400)
-              throw response;
-          return response.json();
+
+  searchMovies(query: string, page: number = 1) {
+    this.requestPending = true;
+    this.tmdbDao.searchMovies(query, page)
+      .then((data) => {
+        this.requestPending = false;
+        this.movies = data["movies"];
+        this.numPages = data["numPages"];
+        this.currentPage = data["currentPage"];
+        this.totalResults = data["totalResults"];
       })
-      .then((data)=>{
-        return data;
-      })
-      .catch((err)=>{
-        console.log(`error: ${err}`);
-        return err;
-      });
-  }
-  searchMovies(query : string, page : number = 1) : Promise<object> {
-    return this.http.fetch(`search/movie?query=${query}&api_key=${this.apiKey}&page=${page}`)
-      .then(response => {
-          if(response.status > 400)
-              throw response;
-          return response.json();
-      })
-      .then((data)=>{
-        this.movies = data["results"];
-        this.pages = data["total_pages"];
-        this.currentPage = data["page"];
-        this.totalResults = data["total_results"];
-      })
-      .catch((err)=>{
-        console.log(`error: ${err}`);
-        return err;
-      });
   }
 }
