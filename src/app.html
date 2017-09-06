@@ -4,7 +4,7 @@
   <require from="./pageControl"></require>
   <input placeholder="search for movies..." value.bind="query & debounce : 250">
   <page-control
-  current-page.two-way="currentPage"
+    current-page.two-way="currentPage"
     num-pages.bind="numPages"
     total-results.bind="totalResults"
     disabled.bind="requestPending">
