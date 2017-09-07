@@ -1,14 +1,14 @@
-<template>
+<template bindable="currentPage, numPages, totalResults, disabled">
     <require from="./page-control.css"></require>
     <div if.bind="numPages > 1">
         <button disabled.bind="disabled" css="visibility: ${(currentPage-1 >= 1)?'visible':'hidden'}" title="Page 1" 
-            click.trigger="changePage(1)">${'<<'}</button>
+            click.trigger="currentPage = 1">${'<<'}</button>
         <button disabled.bind="disabled" css="visibility: ${(currentPage-1 >= 1)?'visible':'hidden'}" title.bind="'Page ' + (currentPage-1)"
-            click.trigger="changePage(currentPage-1)">${'<'}</button>
+            click.trigger="currentPage = currentPage-1">${'<'}</button>
         <span class="pageNumber">Page ${currentPage}</span>
         <button disabled.bind="disabled" css="visibility: ${(currentPage+1 <= numPages)?'visible':'hidden'}" title.bind="'Page ' + (currentPage+1)"
-            click.trigger="changePage(currentPage+1)">${'>'}</button>
+            click.trigger="currentPage = currentPage+1">${'>'}</button>
         <button disabled.bind="disabled" css="visibility: ${(currentPage+1 <= numPages)?'visible':'hidden'}" title.bind="'Page ' + numPages"
-            click.trigger="changePage(numPages)">${'>>'}</button>
+            click.trigger="currentPage = numPages">${'>>'}</button>
     </div>
 </template>
