@@ -20,7 +20,7 @@ export class App {
 
   @computedFrom('selectedMovie', 'movies')
   get getBackground() {
-    if (this.selectedMovie !== undefined) {
+    if (this.selectedMovie !== undefined && this.movies[this.selectedMovie]["backdrop_path"]) {
       return {
         'background-image': 'url(https://image.tmdb.org/t/p/w1280' + this.movies[this.selectedMovie]["backdrop_path"] + ")"
       };
