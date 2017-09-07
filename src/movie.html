@@ -4,7 +4,7 @@
     <span class="textMovieCover" click.trigger="selectMovie()" if.bind="!movieData.poster_path && !selected">${movieData.title}</span>
     <div class="movieInfo" if.bind="selectedMovie == id">
         <h1>${movieData.title}</h1>
+        <h5 if.bind="movieData.release_date">Released ${movieData.release_date}</h5>
         <div>${movieData.overview}</div>
-        <div>${movieData.release_date}</div>
     </div>
 </template>
