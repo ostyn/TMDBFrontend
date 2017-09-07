@@ -11,7 +11,4 @@ export class Movie {
             this.selectedMovie = this.id;
         }
     }
-    get getMovieCoverTitle() {
-        return (this.selectedMovie == this.id) ? "Close": "";
-    }
 }
