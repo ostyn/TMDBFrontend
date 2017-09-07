@@ -19,7 +19,7 @@
           repeat.for="movie of movies">
     </movie>
   </div>
-  <div if.bind="!requestPending && totalResults == 0 && query != ''">No results found</div>
+  <div class="noResults" if.bind="!requestPending && totalResults == 0 && query != ''">No results found</div>
   <page-control
     class="pageControlContainer"
     current-page.two-way="currentPage" 
