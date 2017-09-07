@@ -30,11 +30,13 @@ movie {
     cursor: pointer;
     float: left;
     margin-right: 20px;
-    min-height: 278px;
+    min-height: 263px;
     width: 185px;
     background-color: rgba(0,0,0,0.5);
+    padding-top: 15px;
 }
 .movieInfo {
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 10px;
 }
