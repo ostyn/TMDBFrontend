@@ -1,4 +1,10 @@
-<template>
-    <h1>${movieData.title}</h1>
-    <img src.bind="'https://image.tmdb.org/t/p/w500' + movieData.backdrop_path">
+<template >
+    <require from="./movie.css"></require>
+    <img if.bind="movieData.poster_path" src.bind="'https://image.tmdb.org/t/p/w185' + movieData.poster_path">
+    <span class="title" if.bind="!movieData.poster_path && !selected">${movieData.title}</span>
+    <div class="movieInfo" if.bind="selected">
+        <h1>${movieData.title}</h1>
+        <div>${movieData.overview}</div>
+        <div>${movieData.release_date}</div>
+    </div>
 </template>

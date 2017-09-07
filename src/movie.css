@@ -1,0 +1,21 @@
+movie {
+    min-height: 185px;
+    width: 185px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+.selectedMovie {
+    min-height: 185px;
+    display: flex;
+    width: auto;
+    margin: 20px;
+}
+.selectedMovie img {
+    float: left;
+}
+.movieInfo {
+    background-color: rgba(121, 121, 121, 0.36);
+    padding-left: 20px;
+    padding-right: 20px;
+}
