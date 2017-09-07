@@ -29,15 +29,17 @@ body {
     border-radius: 4px;
     padding: 10px;
     font-size: 20px;
-    width: 200px;
+    width: 300px;
     text-align: center;
     color: rgba(255,255,255,0.8);
     transition: all .1s ease-in-out;
+    margin-top: 40px;
 }
 .searchbox:focus {
+    margin-top: 250px;
     font-size: 22px;
+    width: 400px;
     padding: 20px;
-    background-color: rgba(255,255,255,.5);
     transition: all .1s ease-in-out;
 }
 .pageNumber {
