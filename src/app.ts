@@ -4,7 +4,7 @@ import { inject, bindable, computedFrom } from 'aurelia-framework';
 @inject(TmdbDao)
 export class App {
   movies: object[];
-  @bindable query: string = "star wars";
+  @bindable query: string = "The Force Awakens";
   @bindable currentPage: number = 1;
   numPages: number = 1;
   totalResults: number = 0;
