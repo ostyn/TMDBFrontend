@@ -32,12 +32,10 @@ export class App {
 
   queryChanged() {
     this.searchMovies(this.query);
-    this.selectedMovie = 0;
   }
 
   currentPageChanged() {
     this.searchMovies(this.query, this.currentPage);
-    this.selectedMovie = 0;
   }
 
   selectMovie(index) {
@@ -51,8 +49,15 @@ export class App {
 
   searchMovies(query: string, page: number = 1) {
     this.requestPending = true;
+    document.body.scrollTop = 0;
     this.tmdbDao.searchMovies(query, page)
       .then((data) => {
+        if(data["totalResults"] === 0) {
+          this.selectedMovie = undefined;
+        }
+        else {
+          this.selectedMovie = 0;
+        }
         this.requestPending = false;
         this.movies = data["movies"];
         this.numPages = data["numPages"];
