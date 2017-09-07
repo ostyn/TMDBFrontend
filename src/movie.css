@@ -7,15 +7,19 @@ movie {
 }
 .selectedMovie {
     min-height: 185px;
-    display: flex;
     width: auto;
     margin: 20px;
+    margin-left: 0px;
+    display: block;
+    overflow: hidden;
+    background-color: rgba(120, 120, 120, 0.35);
+    color: rgba(255,255,255,0.8);
 }
 .selectedMovie img {
     float: left;
+    margin-right: 20px;
 }
 .movieInfo {
-    background-color: rgba(121, 121, 121, 0.36);
     padding-left: 20px;
     padding-right: 20px;
 }
