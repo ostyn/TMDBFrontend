@@ -1,8 +1,8 @@
 <template>
-  <div class="background" css.bind="getBackground"></div>
   <require from="./style.css"></require>
   <require from="./movie"></require>
   <require from="./pageControl"></require>
+  <div class="background" css.bind="getBackground"></div>
   <input placeholder="search for movies..." value.bind="query & debounce : 250">
   <page-control
     current-page.two-way="currentPage"
