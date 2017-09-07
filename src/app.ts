@@ -20,14 +20,14 @@ export class App {
 
   @computedFrom('selectedMovie', 'movies')
   get getBackground() {
-      if (this.selectedMovie !== undefined) {
-          return {
-                  'background-image': 'url(https://image.tmdb.org/t/p/w1280' + this.movies[this.selectedMovie]["backdrop_path"] + ")"
-              };
-      }
-      else {
-          return {}
-      }
+    if (this.selectedMovie !== undefined) {
+      return {
+        'background-image': 'url(https://image.tmdb.org/t/p/w1280' + this.movies[this.selectedMovie]["backdrop_path"] + ")"
+      };
+    }
+    else {
+      return {}
+    }
   }
 
   queryChanged() {
@@ -43,7 +43,7 @@ export class App {
     document.body.scrollTop = 0;
     this.tmdbDao.searchMovies(query, page)
       .then((data) => {
-        if(data["totalResults"] === 0) {
+        if (data["totalResults"] === 0) {
           this.selectedMovie = undefined;
         }
         else {
