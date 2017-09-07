@@ -1,4 +1,5 @@
 <template bindable="totalResults, numPages">
+    <require from="./query-stats.css"></require>
     <div class="queryStats">
         <span if.bind="totalResults > 0">${totalResults} results</span>
         <span if.bind="numPages > 1"> in ${numPages} pages</span>

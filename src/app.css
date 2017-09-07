@@ -60,11 +60,6 @@ body {
     min-width: 60px;
     color: rgba(255,255,255,0.8);
 }
-.queryStats {
-    text-align: center;
-    margin: 10px;
-    font-size: 12px;
-}
 .attribution {
     height: 50px;
     margin-left: -60px;
