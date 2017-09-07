@@ -11,6 +11,14 @@ export class TmdbDao {
         this.http.baseUrl = "https://api.themoviedb.org/3/";
     }
     searchMovies(query : string, page : number = 1) : Promise<object> {
+        if(query === "" || query === undefined) {
+            return Promise.resolve({
+                'movies' : [],
+                'currentPage' : 1,
+                'numPages' : 1,
+                'totalResults' : 0
+            });
+        }
         return this.http.fetch(`search/movie?query=${query}&api_key=${this.apiKey}&page=${page}`)
           .then(response => {
               if(response.status > 400)
