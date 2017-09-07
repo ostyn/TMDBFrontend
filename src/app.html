@@ -6,11 +6,9 @@
   <div class="searchboxContainer">
     <input class="searchbox" placeholder="search for movies..." value.bind="query & debounce : 250">
   </div>
-  <div class="pageControlContainer">
-      <div class="queryStats">
-          <span if.bind="totalResults > 0">${totalResults} results</span>
-          <span if.bind="numPages > 1"> in ${numPages} pages</span>
-      </div>
+  <div class="queryStats">
+      <span if.bind="totalResults > 0">${totalResults} results</span>
+      <span if.bind="numPages > 1"> in ${numPages} pages</span>
   </div>
   <div class="movieList">
     <movie class.bind="(selectedMovie==$index)? 'selectedMovie' : ''" 
