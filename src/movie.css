@@ -3,6 +3,8 @@ movie {
     width: 185px;
     display: inline-block;
     vertical-align: top;
+    transition: all .2s ease-in-out;
+    background-color: rgba(120, 120, 120, 0.0);
 }
 .selectedMovie {
     min-height: 185px;
@@ -13,6 +15,7 @@ movie {
     overflow: hidden;
     background-color: rgba(120, 120, 120, 0.35);
     color: rgba(255,255,255,0.8);
+    transition: all .2s ease-in-out;
 }
 .movieCover {
     cursor: pointer;
