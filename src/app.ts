@@ -1,4 +1,4 @@
-import { TmdbDao } from './TmdbDao';
+import { TmdbDao } from './dao/TmdbDao';
 import { inject, bindable, computedFrom } from 'aurelia-framework';
 
 @inject(TmdbDao)
