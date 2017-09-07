@@ -3,8 +3,8 @@ export class Movie {
     @bindable movieData: object;
     @bindable selectedMovie: number;
     @bindable id: number;
-    selectMovie (){
-        if(this.selectedMovie == this.id){
+    selectMovie() {
+        if (this.selectedMovie == this.id) {
             this.selectedMovie = undefined;
         }
         else {
