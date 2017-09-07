@@ -4,7 +4,7 @@ import { inject, bindable, computedFrom } from 'aurelia-framework';
 @inject(TmdbDao)
 export class App {
   movies: object[];
-  @bindable query: string = "";
+  @bindable query: string = "star wars";
   @bindable currentPage: number = 1;
   numPages: number = 1;
   totalResults: number = 0;
@@ -15,6 +15,7 @@ export class App {
 
   constructor(tmdbDao) {
     this.tmdbDao = tmdbDao;
+    this.searchMovies(this.query);
   }
 
   @computedFrom('selectedMovie', 'movies')
@@ -22,7 +23,7 @@ export class App {
       if (this.selectedMovie !== undefined) {
           return {
                   'background-image': 'url(https://image.tmdb.org/t/p/w1280' + this.movies[this.selectedMovie]["backdrop_path"] + ")",
-                  'opacity': '0.5'
+                  'opacity': '0.6'
               };
       }
       else {
@@ -36,15 +37,6 @@ export class App {
 
   currentPageChanged() {
     this.searchMovies(this.query, this.currentPage);
-  }
-
-  selectMovie(index) {
-    if (this.selectedMovie == index) {
-      this.selectedMovie = undefined;
-    }
-    else {
-      this.selectedMovie = index;
-    }
   }
 
   searchMovies(query: string, page: number = 1) {

@@ -1,10 +1,13 @@
 <template>
-  <require from="./style.css"></require>
+  <require from="./app.css"></require>
   <require from="./movie"></require>
   <require from="./pageControl"></require>
   <div class="background" css.bind="getBackground"></div>
+  <a href="https://www.themoviedb.org/">
+    <img class="attribution" src="https://www.themoviedb.org/assets/static_cache/b32eda2e3812fd459d394791849e7144/images/v4/logos/stacked-blue.svg">
+  </a>
   <div class="searchboxContainer">
-    <input class="searchbox" placeholder="search for movies..." value.bind="query & debounce : 250">
+    <input autofocus="autofocus" class="searchbox" placeholder="search for movies..." value.bind="query & debounce : 250">
   </div>
   <div class="queryStats">
       <span if.bind="totalResults > 0">${totalResults} results</span>
@@ -12,9 +15,9 @@
   </div>
   <div class="movieList">
     <movie class.bind="(selectedMovie==$index)? 'selectedMovie' : ''" 
-          selected.bind="selectedMovie==$index" 
+          selected-movie.two-way="selectedMovie" 
           movie-data.bind="movie" 
-          click.trigger="selectMovie($index)" 
+          id.bind="$index"
           repeat.for="movie of movies">
     </movie>
   </div>

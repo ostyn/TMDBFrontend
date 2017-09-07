@@ -1,13 +1,12 @@
 movie {
-    min-height: 185px;
+    min-height: 278px;
     width: 185px;
     display: inline-block;
     vertical-align: top;
-    cursor: pointer;
 }
 .selectedMovie {
     min-height: 185px;
-    width: auto;
+    width: 100%;
     margin: 20px;
     margin-left: 0px;
     display: block;
@@ -15,9 +14,21 @@ movie {
     background-color: rgba(120, 120, 120, 0.35);
     color: rgba(255,255,255,0.8);
 }
-.selectedMovie img {
+.movieCover {
+    cursor: pointer;
     float: left;
     margin-right: 20px;
+    width: 185px;
+    background-color: rgba(0,0,0,0.5);
+}
+.textMovieCover {
+    text-align: center;
+    cursor: pointer;
+    float: left;
+    margin-right: 20px;
+    min-height: 278px;
+    width: 185px;
+    background-color: rgba(0,0,0,0.5);
 }
 .movieInfo {
     padding-left: 20px;

@@ -1,8 +1,8 @@
 <template >
     <require from="./movie.css"></require>
-    <img if.bind="movieData.poster_path" src.bind="'https://image.tmdb.org/t/p/w185' + movieData.poster_path">
-    <span class="title" if.bind="!movieData.poster_path && !selected">${movieData.title}</span>
-    <div class="movieInfo" if.bind="selected">
+    <img class = "movieCover" title.bind="getMovieCoverTitle" click.trigger="selectMovie()" if.bind="movieData.poster_path" src.bind="'https://image.tmdb.org/t/p/w185' + movieData.poster_path">
+    <span class="textMovieCover" click.trigger="selectMovie()" if.bind="!movieData.poster_path && !selected">${movieData.title}</span>
+    <div class="movieInfo" if.bind="selectedMovie == id">
         <h1>${movieData.title}</h1>
         <div>${movieData.overview}</div>
         <div>${movieData.release_date}</div>
