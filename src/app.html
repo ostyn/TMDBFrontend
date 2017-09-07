@@ -2,6 +2,7 @@
   <require from="./app.css"></require>
   <require from="./movie"></require>
   <require from="./page-control"></require>
+  <require from="./query-stats.html"></require>
   <div class="background" css.bind="getBackground"></div>
   <a href="https://www.themoviedb.org/">
     <img class="attribution" src="https://www.themoviedb.org/assets/static_cache/b32eda2e3812fd459d394791849e7144/images/v4/logos/stacked-blue.svg">
@@ -9,10 +10,7 @@
   <div class="searchboxContainer">
     <input autofocus="autofocus" class="searchbox" placeholder="search for movies..." value.bind="query & debounce : 250">
   </div>
-  <div class="queryStats">
-      <span if.bind="totalResults > 0">${totalResults} results</span>
-      <span if.bind="numPages > 1"> in ${numPages} pages</span>
-  </div>
+  <query-stats total-results.bind="totalResults" num-pages.bind="numPages"></query-stats>
   <div class="movieList">
     <movie class.bind="(selectedMovie==$index)? 'selectedMovie' : ''" 
           selected-movie.two-way="selectedMovie" 
@@ -22,16 +20,12 @@
     </movie>
   </div>
   <div if.bind="!requestPending && totalResults == 0 && query != ''">No results found</div>
-  <div class="pageControlContainer">
-    <page-control
-      current-page.two-way="currentPage" 
-      num-pages.bind="numPages"
-      total-results.bind="totalResults"
-      disabled.bind="requestPending">
-    </page-control>
-    <div class="queryStats">
-        <span if.bind="totalResults > 0">${totalResults} results</span>
-        <span if.bind="numPages > 1"> in ${numPages} pages</span>
-    </div>
-  </div>
+  <page-control
+    class="pageControlContainer"
+    current-page.two-way="currentPage" 
+    num-pages.bind="numPages"
+    total-results.bind="totalResults"
+    disabled.bind="requestPending">
+  </page-control>
+  <query-stats total-results.bind="totalResults" num-pages.bind="numPages"></query-stats>
 </template>
