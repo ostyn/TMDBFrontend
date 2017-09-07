@@ -22,9 +22,7 @@ export class App {
   get getBackground() {
       if (this.selectedMovie !== undefined) {
           return {
-                  'background-image': 'url(https://image.tmdb.org/t/p/w1280' + this.movies[this.selectedMovie]["backdrop_path"] + ")",
-                  'opacity': '0.6',
-                  'background-size': 'cover'
+                  'background-image': 'url(https://image.tmdb.org/t/p/w1280' + this.movies[this.selectedMovie]["backdrop_path"] + ")"
               };
       }
       else {

@@ -1,6 +1,10 @@
-.selected {
-    font-weight: bold;
+body {
+    padding: 10px;
+    background-color: #351f1f;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
+/* background-image set dynamically in app.js->getBackground*/
 .background {
     position: fixed;
     top: 0;
@@ -8,12 +12,8 @@
     left: 0;
     right: 0;
     z-index: -1;
-}
-body {
-    padding: 10px;
-    background-color: #351f1f;
-    color: rgba(255,255,255,0.8);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    opacity: 0.6;
+    background-size: cover;
 }
 .movieList {
     max-width: 925px;
@@ -41,24 +41,6 @@ body {
     width: 400px;
     padding: 20px;
     transition: all .1s ease-in-out;
-}
-.pageNumber {
-    margin: 10px;
-}
-.pageControlContainer {
-    text-align: center;
-}
-.pageControlContainer button {
-    cursor: pointer;
-    background-color: rgba(255,255,255,.2);
-    border: none;
-    border-radius: 4px;
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 25px;
-    min-width: 60px;
-    color: rgba(255,255,255,0.8);
 }
 .attribution {
     height: 50px;
