@@ -3,13 +3,15 @@
   <require from="./movie"></require>
   <require from="./pageControl"></require>
   <div class="background" css.bind="getBackground"></div>
-  <input placeholder="search for movies..." value.bind="query & debounce : 250">
-  <page-control
-    current-page.two-way="currentPage"
-    num-pages.bind="numPages"
-    total-results.bind="totalResults"
-    disabled.bind="requestPending">
-  </page-control>
+  <div class="searchboxContainer">
+    <input class="searchbox" placeholder="search for movies..." value.bind="query & debounce : 250">
+  </div>
+  <div class="pageControlContainer">
+      <div class="queryStats">
+          <span if.bind="totalResults > 0">${totalResults} results</span>
+          <span if.bind="numPages > 1"> in ${numPages} pages</span>
+      </div>
+  </div>
   <div class="movieList">
     <movie class.bind="(selectedMovie==$index)? 'selectedMovie' : ''" 
           selected.bind="selectedMovie==$index" 
@@ -19,10 +21,16 @@
     </movie>
   </div>
   <div if.bind="!requestPending && totalResults == 0 && query != ''">No results found</div>
-  <page-control
-    current-page.two-way="currentPage" 
-    num-pages.bind="numPages"
-    total-results.bind="totalResults"
-    disabled.bind="requestPending">
-  </page-control>
+  <div class="pageControlContainer">
+    <page-control
+      current-page.two-way="currentPage" 
+      num-pages.bind="numPages"
+      total-results.bind="totalResults"
+      disabled.bind="requestPending">
+    </page-control>
+    <div class="queryStats">
+        <span if.bind="totalResults > 0">${totalResults} results</span>
+        <span if.bind="numPages > 1"> in ${numPages} pages</span>
+    </div>
+  </div>
 </template>
