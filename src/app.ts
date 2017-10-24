@@ -38,22 +38,20 @@ export class App {
     this.searchMovies(this.query, this.currentPage);
   }
 
-  searchMovies(query: string, page: number = 1) {
+  async searchMovies(query: string, page: number = 1) {
     this.requestPending = true;
     document.body.scrollTop = 0;
-    this.tmdbDao.searchMovies(query, page)
-      .then((data) => {
-        if (data["totalResults"] === 0) {
-          this.selectedMovie = undefined;
-        }
-        else {
-          this.selectedMovie = 0;
-        }
-        this.requestPending = false;
-        this.movies = data["movies"];
-        this.numPages = data["numPages"];
-        this.currentPage = data["currentPage"];
-        this.totalResults = data["totalResults"];
-      })
+    let data = await this.tmdbDao.searchMovies(query, page)
+    if (data["totalResults"] === 0) {
+      this.selectedMovie = undefined;
+    }
+    else {
+      this.selectedMovie = 0;
+    }
+    this.requestPending = false;
+    this.movies = data["movies"];
+    this.numPages = data["numPages"];
+    this.currentPage = data["currentPage"];
+    this.totalResults = data["totalResults"];
   }
 }

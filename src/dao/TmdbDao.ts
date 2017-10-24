@@ -10,7 +10,7 @@ export class TmdbDao {
         this.http = httpClient;
         this.http.baseUrl = "https://api.themoviedb.org/3/";
     }
-    searchMovies(query: string, page: number = 1): Promise<object> {
+    async searchMovies(query: string, page: number = 1): Promise<object> {
         if (query === "" || query === undefined) {
             return Promise.resolve({
                 'movies': [],
@@ -19,23 +19,13 @@ export class TmdbDao {
                 'totalResults': 0
             });
         }
-        return this.http.fetch(`search/movie?query=${query}&api_key=${this.apiKey}&page=${page}`)
-            .then(response => {
-                if (response.status > 400)
-                    throw response;
-                return response.json();
-            })
-            .then((data) => {
-                return {
-                    'movies': data["results"],
-                    'currentPage': data["page"],
-                    'numPages': data["total_pages"],
-                    'totalResults': data["total_results"]
-                };
-            })
-            .catch((err) => {
-                console.log(`error: ${err}`);
-                return err;
-            });
+        let response = await this.http.fetch(`search/movie?query=${query}&api_key=${this.apiKey}&page=${page}`);
+        let data = await response.json();
+        return {
+            'movies': data["results"],
+            'currentPage': data["page"],
+            'numPages': data["total_pages"],
+            'totalResults': data["total_results"]
+        };
     }
 }
