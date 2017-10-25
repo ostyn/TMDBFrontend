@@ -12,12 +12,12 @@ export class TmdbDao {
     }
     async searchMovies(query: string, page: number = 1): Promise<object> {
         if (query === "" || query === undefined) {
-            return Promise.resolve({
+            return {
                 'movies': [],
                 'currentPage': 1,
                 'numPages': 1,
                 'totalResults': 0
-            });
+            };
         }
         let response = await this.http.fetch(`search/movie?query=${query}&api_key=${this.apiKey}&page=${page}`);
         let data = await response.json();
